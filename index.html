@@ -8,8 +8,9 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="무작위 K-신입사원">
 <meta property="og:description" content="회사, 부서, 상사는 뽑기로 정해진다. 입사부터 마지막 순간까지, 당신의 인생은?">
-<!-- 공유 썸네일: 배포 후 "og-image.png"를 전체 주소(https://내사이트/og-image.png)로 바꾸면 카카오톡·페이스북에서도 확실히 뜸 -->
-<meta property="og:image" content="og-image.png">
+<!-- 공유 썸네일은 전체 주소여야 카카오톡·페이스북에서 뜬다 -->
+<meta property="og:url" content="https://kjh1027.github.io/k-shinip/">
+<meta property="og:image" content="https://kjh1027.github.io/k-shinip/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#e8ff2a">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪪</text></svg>">
@@ -39,6 +40,7 @@ aside:empty{display:none}
 .log{list-style:none;padding:0;margin:0;font-size:13px;max-height:260px;overflow:auto}
 .log li{padding:4px 0;border-bottom:1px dashed var(--mut)}
 .log small{font-family:'IBM Plex Mono',monospace;color:var(--mut)}
+.sg:disabled{opacity:.4;cursor:not-allowed}
 .shop{list-style:none;padding:0;margin:0;display:grid;gap:6px}
 .shop li{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;border-bottom:1px dashed var(--mut);padding-bottom:6px}
 .shop small{display:block;color:var(--mut);font-size:11px}
@@ -516,23 +518,23 @@ const E=[
  {id:'sogaeting',rep:1,age:[24,50],no:['crush','dating','married'],ti:'소개팅 주선',q:'선배가 "딱 네 스타일"이라며 소개팅을 주선해줬다.',c:[
   ['나간다',o(50,'대화가 잘 통했다! 연락이 이어진다.',[6,0,-3,0],'crush'),o(50,'어색한 2시간. 밥값은 내가 냈다.',[-4,0,-3,0])],
   ['일이 바빠서 거절한다',o(100,'선배가 아쉬워했다.',[0,0,0,0])]]},
- {id:'confess',rep:1,req:'crush',no:'dating',ti:'고백 타이밍',q:'썸 타던 사람과 단둘이 퇴근하게 됐다. 지금이 고백할 타이밍이다.',c:[
-  ['고백한다',o(70,'"나도 좋아." 연애 시작!',[12,0,-2,0],'dating -crush'),o(30,'"좋은 동료로 지내자." 집에 가서 울었다.',[-12,0,0,-2],'-crush -office')],
+ {id:'confess',rep:1,req:'crush',no:'dating',ti:'고백 타이밍',q:'썸 타던 {P}와 단둘이 퇴근하게 됐다. 지금이 고백할 타이밍이다.',c:[
+  ['고백한다',o(70,'"나도 좋아." {P}와 연애 시작!',[12,0,-2,0],'dating -crush'),o(30,'"좋은 동료로 지내자." 집에 가서 울었다.',[-12,0,0,-2],'-crush -office')],
   ['조금 더 지켜본다',o(60,'썸은 계속된다.',[1,0,0,0]),o(40,'그 사이 다른 사람이 생겼다고 한다.',[-8,0,0,0],'-crush -office')]]},
- {id:'caught',req:['dating','office'],ti:'사내연애 들킴',q:'회사 앞 카페에서 연인과 있다가 팀장님과 마주쳤다.',c:[
+ {id:'caught',req:['dating','office'],ti:'사내연애 들킴',q:'회사 앞 카페에서 {P}와 있다가 팀장님과 마주쳤다.',c:[
   ['당당하게 인사한다',o(60,'"둘이 잘 어울리네!" 공식 사내 커플이 됐다.',[6,0,0,2]),o(40,'다음 날 전 층에 소문이 났다.',[-8,0,0,-4])],
   ['모르는 척 지나간다',o(50,'팀장님도 모른 척해줬다.',[2,0,0,0]),o(50,'"어제 그 사람 누구야?" 점심시간 내내 추궁당했다.',[-6,0,0,-2])]]},
- {id:'fight',req:'dating',min:8,ti:'연인의 서운함',q:'연인이 말한다. "우리 요즘 너무 못 만나는 것 같아."',c:[
+ {id:'fight',req:'dating',min:8,ti:'연인의 서운함',q:'{P}가 말한다. "우리 요즘 너무 못 만나는 것 같아."',c:[
   ['연차 내고 여행을 간다',o(75,'관계가 단단해졌다.',[8,4,-8,-2]),o(25,'여행 중에도 업무 전화가 왔다.',[-6,2,-8,-2])],
   ['"요즘 일이 너무 바빠서…"',o(50,'"그럼 그만하자." 이별했다.',[-15,0,0,0],'~break'),o(50,'이해해줬다. 미안하다.',[-4,0,0,0])]]},
- {id:'propose',rep:1,w:2,req:'dating',no:'married',min:14,ti:'결혼 이야기',q:'연인과 결혼 이야기가 자연스럽게 나왔다. 반지를 살까?',c:[
-  ['프러포즈한다',o(80,'"응!" 결혼이 결정됐다. 결혼 준비 비용이 만만치 않다.',[15,-4,-15,4],'married -dating'),o(20,'"아직은 이르지 않을까?"',[-10,0,0,0])],
+ {id:'propose',rep:1,w:2,req:'dating',no:'married',min:14,ti:'결혼 이야기',q:'{P}와 결혼 이야기가 자연스럽게 나왔다. 반지를 살까?',c:[
+  ['프러포즈한다',o(80,'"응!" {P}와 결혼이 결정됐다. 결혼 준비 비용이 만만치 않다.',[15,-4,-15,4],'married -dating'),o(20,'"아직은 이르지 않을까?"',[-10,0,0,0])],
   ['아직은 아니다',o(100,'연애를 더 즐기기로 했다.',[2,0,0,0])]]},
  {id:'newlywed',req:'married',ti:'신혼집 구하기',q:'신혼집을 구해야 한다. 전세 대출 금리가 무섭다.',c:[
   ['영끌해서 역세권 아파트',o(40,'집값이 올랐다! 영끌 성공.',[10,0,10,0]),o(60,'이자가 월급의 절반이다.',[-8,0,-18,0])],
   ['외곽 빌라 전세',o(100,'출퇴근은 멀지만 마음은 편하다.',[2,-4,-4,0])]]},
  // ── 이별 / 바람 ('~break' = 연애·결혼 종료, 기혼이면 이혼 + 재산분할) ──
- {id:'cheat',req:'dating',min:6,w:.5,ti:'낯선 메시지',q:'연인의 휴대폰에 "자기야 보고 싶어" 메시지가 떴다. 보낸 사람은 내가 아니다.',c:[
+ {id:'cheat',req:'dating',min:6,w:.5,ti:'낯선 메시지',q:'{P}의 휴대폰에 "자기야 보고 싶어" 메시지가 떴다. 보낸 사람은 내가 아니다.',c:[
   ['당장 따진다',o(40,'오해였다. 사촌 동생이었다. 민망하다.',[-4,0,0,0]),o(60,'바람이었다. 그 자리에서 헤어졌다.',[-22,-4,0,0],'~break')],
   ['모른 척 지켜본다',o(50,'별일 아니었던 것 같다. 찝찝함은 남는다.',[-8,0,0,0]),o(50,'결국 이별 통보를 받았다.',[-18,0,0,0],'~break')]]},
  {id:'temptation',any:['dating','married'],min:6,ti:'회식 후의 유혹',q:'회식이 끝났다. 예전에 썸 탔던 동기가 속삭인다. "우리 둘이 한잔 더 할래?"',c:[
@@ -541,13 +543,13 @@ const E=[
  {id:'affair2',req:'affair',min:10,ti:'양다리 위기',q:'비밀이 점점 커졌다. 양다리가 들킬 위기다.',c:[
   ['지금이라도 정리한다',o(60,'조용히 정리했다. 죄책감이 남는다.',[-8,0,0,0],'-affair'),o(40,'정리하려다 들켰다. 둘 다 잃었다.',[-25,0,0,-12],'~break')],
   ['계속 숨긴다',o(30,'아슬아슬하게 버텼다.',[-6,-4,0,0]),o(70,'단톡방에 증거 사진이 올라왔다. 사내에 소문이 퍼졌다.',[-25,0,0,-18],'~break')]]},
- {id:'parents',req:'dating',min:8,ti:'부모님께 인사',q:'연인이 부모님께 인사드리러 가자고 한다.',c:[
+ {id:'parents',req:'dating',min:8,ti:'부모님께 인사',q:'{P}가 부모님께 인사드리러 가자고 한다.',c:[
   ['정장 입고 인사드린다',o(60,'"좋은 사람 만났구나." 합격!',[10,-2,-3,0]),o(40,'"직장은 어디라고? 연봉은?" 날카로운 질문 세례.',[-8,-2,-3,0])],
   ['아직 이르다고 한다',o(50,'연인이 서운해했다.',[-6,0,0,0]),o(50,'"그럼 우리 관계는 뭔데?" 이별했다.',[-15,0,0,0],'~break')]]},
- {id:'longdist',req:'dating',w:.5,ti:'장거리 연애',q:'연인이 해외 지사로 1년 발령을 받았다.',c:[
+ {id:'longdist',req:'dating',w:.5,ti:'장거리 연애',q:'{P}가 해외 지사로 1년 발령을 받았다.',c:[
   ['장거리 연애를 한다',o(50,'매일 밤 영상통화. 오히려 애틋해졌다.',[4,-3,-4,0]),o(50,'시차가 감정을 갉아먹었다. 이별.',[-16,0,0,0],'~break')],
   ['여기서 끝내자고 한다',o(100,'공항에서 마지막 인사를 했다.',[-14,0,0,0],'~break')]]},
- {id:'exmsg',req:'ex',no:['dating','married'],ti:'"자니…?"',q:'새벽 2시, 전 애인에게서 연락이 왔다. "자니…?"',c:[
+ {id:'exmsg',req:'ex',no:['dating','married'],ti:'"자니…?"',q:'새벽 2시, 전 애인 {EX}에게서 연락이 왔다. "자니…?"',c:[
   ['답장한다',o(40,'다시 만나기로 했다. 재회!',[8,0,0,0],'dating -ex'),o(60,'술김에 한 연락이었다. 또 상처받았다.',[-10,-2,0,0])],
   ['차단한다',o(100,'후련하다. 새 출발이다.',[6,0,0,0],'-ex')]]}];
 // 이벤트 → 장면 ('장면:변형' = 이벤트 id 목록). 없으면 사무실
@@ -588,21 +590,21 @@ const LIFE=[
  {i:'🎟️',t:'로또 5등 당첨! 5천 원이지만 기분이 좋다.',d:[2,0,0,0],sc:'home:rest'},
  {i:'🎓',t:'동생 등록금이 모자라다고 한다. 100만 원을 보탰다.',d:[-2,0,-4,0],c:-100,w:.5,sc:'home:rest'},
  {i:'🧾',t:'13월의 월급! 연말정산 환급금이 들어왔다.',d:[4,0,3,0],c:60,if:S=>S.job=='company'&&S.turn>=18&&!S.fl.tax,fl:'tax',sc:'office'},
- {i:'🐈',t:'퇴근길에 길고양이가 따라왔다. 결국 집사가 됐다.',d:[6,0,-1,0],c:-20,if:S=>!S.fl.pet,fl:'pet',w:.5,sc:'home:rest'},
- {i:'🐈',t:'고양이가 무릎 위에서 잠들었다. 힐링.',d:[4,0,0,0],if:S=>S.fl.pet,sc:'home:rest'},
+ {i:'🐈',t:'퇴근길에 길고양이가 따라왔다. 이름은 {PET}. 결국 집사가 됐다.',d:[6,0,-1,0],c:-20,if:S=>!S.fl.pet,fl:'pet',w:.5,sc:'home:rest'},
+ {i:'🐈',t:'{PET}가 무릎 위에서 잠들었다. 힐링.',d:[4,0,0,0],if:S=>S.fl.pet,sc:'home:rest'},
  {i:'💘',t:'옆 팀 동기와 자꾸 엘리베이터에서 마주친다. 왠지 설렌다.',d:[4,0,0,0],if:S=>S.job=='company'&&S.age<45&&!S.fl.crush&&!S.fl.dating&&!S.fl.married,fl:'crush office',w:.7,sc:'office'},
- {i:'💞',t:'연인과 100일 기념일. 레스토랑을 예약했다.',d:[6,0,-2,0],c:-15,if:S=>S.fl.dating,sc:'date'},
- {i:'💢',t:'연인과 사소한 일로 다퉜다.',d:[-5,0,0,0],if:S=>S.fl.dating||S.fl.married,sc:'date:fight'},
+ {i:'💞',t:'{P}와 100일 기념일. 레스토랑을 예약했다.',d:[6,0,-2,0],c:-15,if:S=>S.fl.dating,sc:'date'},
+ {i:'💢',t:'{P}와 사소한 일로 다퉜다.',d:[-5,0,0,0],if:S=>S.fl.dating||S.fl.married,sc:'date:fight'},
  {i:'💔',t:'연락이 뜸해지더니 이별 통보를 받았다. "우리 그만하자."',d:[-14,0,0,0],if:S=>S.fl.dating,fl:'~break',w:.15},
  {i:'👂',t:'사내연애 소문이 탕비실에 돌기 시작했다.',d:[-2,0,0,-2],if:S=>S.job=='company'&&S.fl.dating&&S.fl.office,sc:'office'},
- {i:'🍱',t:'배우자가 도시락을 싸줬다. 점심값 굳었다.',d:[4,2,1,0],c:5,if:S=>S.fl.married,sc:'home:rest'},
+ {i:'🍱',t:'{P}가 도시락을 싸줬다. 점심값 굳었다.',d:[4,2,1,0],c:5,if:S=>S.fl.married,sc:'home:rest'},
  {i:'🏠',t:'양가 부모님 집을 번갈아 방문했다. 주말이 사라졌다.',d:[-3,-2,-1,0],c:-10,if:S=>S.fl.married,sc:'commute'}];
 // 쇼핑: p=가격(만원), d=효과(다음 나레이션 때 적용), pass=매 턴 효과(all 또는 루틴별), rep=여러 번 구매, pr=연인 필요, leave=필요한 연차(일),
 // go=다음 나레이션 문장, sc=그때의 장면
 const SHOP=[
  {id:'console',n:'게임기',i:'🎮',p:60,d:[6,0,0,0],pass:{game:[2,0,0,0]},x:'게임 루틴 멘탈 +2',go:'새 게임기로 주말 내내 게임 삼매경!',sc:'home:game'},
  {id:'pt',n:'PT 10회',i:'🏋️',p:80,d:[0,8,0,0],pass:{gym:[0,2,0,0]},x:'운동 루틴 체력 +2',go:'PT 첫날. 트레이너가 무섭다. 그래도 몸이 가벼워졌다.',sc:'gym'},
- {id:'gift',n:'연인 선물',i:'🎁',p:120,d:[8,0,0,0],rep:1,pr:1,x:'연인이 감동한다',go:'준비한 선물을 건넸다. 연인이 눈물을 글썽였다.',sc:'date'},
+ {id:'gift',n:'연인 선물',i:'🎁',p:120,d:[8,0,0,0],rep:1,pr:1,x:'연인이 감동한다',go:'{P}에게 준비한 선물을 건넸다. 눈물을 글썽였다.',sc:'date'},
  {id:'laptop',n:'최신 노트북',i:'💻',p:250,d:[4,0,0,2],pass:{study:[0,0,0,2]},x:'자기계발 루틴 평판 +2',go:'새 노트북을 들고 카페에 갔다. 속도가 미쳤다.',sc:'cafe'},
  {id:'chair',n:'안마의자',i:'💺',p:300,d:[3,4,0,0],pass:{all:[0,1,0,0]},x:'매 턴 체력 +1',go:'안마의자가 배송됐다. 앉자마자 잠들었다.',sc:'home:rest'},
  {id:'trip',n:'해외여행',i:'✈️',p:350,d:[15,8,0,-2],rep:1,leave:4,x:'연차 4일 필요 · 멘탈·체력 크게 회복',go:'해외여행을 떠났다! 에메랄드빛 바다에서 모든 걸 잊었다.',sc:'beach'},
@@ -629,22 +631,22 @@ E.push(
  {id:'filler',st:'any',rep:1,w:.3,ti:'평범한 나날',q:'특별한 일 없이 시간이 흘렀다.',sc:'home:rest',c:[
   ['감사하며 지낸다',o(100,'평범함이 가장 소중하다.',[3,1,0,0])],
   ['새로운 걸 시작한다',o(50,'새 취미를 찾았다!',[6,0,-3,0]),o(50,'작심삼일.',[-2,0,-2,0])]]},
- {id:'baby',st:'any',rep:1,w:3,req:'married',age:[27,44],ti:'아이 계획',q:'배우자가 조심스럽게 묻는다. "우리… 아이 가질까?"',sc:'home:rest',c:[
-  ['좋아!',o(80,'열 달 뒤 아이가 태어났다! 잠 못 드는 밤이 시작됐다.',[12,-8,-8,0],'+kid'),o(20,'쉽게 생기지 않는다. 난임 병원을 다니기 시작했다.',[-8,-4,-8,0])],
+ {id:'baby',st:'any',rep:1,w:3,req:'married',age:[27,44],ti:'아이 계획',q:'{P}가 조심스럽게 묻는다. "우리… 아이 가질까?"',sc:'home:rest',c:[
+  ['좋아!',o(80,'열 달 뒤 {K}가 태어났다! 잠 못 드는 밤이 시작됐다.',[12,-8,-8,0],'+kid'),o(20,'쉽게 생기지 않는다. 난임 병원을 다니기 시작했다.',[-8,-4,-8,0])],
   ['아직은 둘이 좋아',o(100,'둘만의 시간을 더 즐기기로 했다.',[4,0,0,0])]]},
  {id:'marrypress',st:'any',rep:1,w:1.5,no:['married','dating'],age:[30,45],ti:'"결혼은 언제 하니?"',q:'명절마다 듣는 그 질문. 올해는 친척이 선 자리까지 들고 왔다.',sc:'home:rest',c:[
   ['"때가 되면요"',o(100,'올해도 넘겼다.',[-4,0,0,0])],
   ['선 자리에 나간다',o(50,'괜찮은 사람이었다! 연락을 이어간다.',[6,0,-3,0],'crush'),o(50,'어색한 식사만 했다.',[-4,0,-3,0])]]},
- {id:'kidschool',st:'any',rep:1,cond:kidC,age:[34,58],ti:'학원비 고지서',q:'아이 학원비 고지서가 날아왔다. 옆집 애는 학원을 다섯 개 다닌다.',sc:'home:rest',c:[
+ {id:'kidschool',st:'any',rep:1,cond:kidC,age:[34,58],ti:'학원비 고지서',q:'{K}의 학원비 고지서가 날아왔다. 옆집 애는 학원을 다섯 개 다닌다.',sc:'home:rest',c:[
   ['학원 풀코스',o(60,'아이 성적이 쑥 올랐다!',[2,0,-12,2]),o(40,'아이가 지쳐서 울었다.',[-8,0,-12,0])],
   ['하고 싶은 걸 하게 둔다',o(70,'아이가 행복해 보인다.',[6,0,0,0]),o(30,'"OO이는 영재반 갔대"… 비교가 시작됐다.',[-6,0,0,0])]]},
- {id:'suneung',st:'any',cond:kidC,age:[45,62],ti:'수능 날',q:'아이의 수능 날. 교문 앞에서 엿을 쥐고 기다린다.',sc:'park:walk',c:[
+ {id:'suneung',st:'any',cond:kidC,age:[45,62],ti:'수능 날',q:'{K1}의 수능 날. 교문 앞에서 엿을 쥐고 기다린다.',sc:'park:walk',c:[
   ['말없이 꼭 안아준다',o(60,'원하는 대학에 붙었다!',[12,0,-6,2]),o(40,'재수를 하기로 했다. 다시 1년.',[-8,-2,-8,0])],
   ['"수고했어, 결과는 상관없어"',o(100,'아이가 웃었다. 그걸로 충분했다.',[8,0,0,0])]]},
- {id:'kidwed',st:'any',cond:kidC,age:[55,75],ti:'아이의 결혼',q:'아이가 결혼할 사람을 데려왔다.',sc:'date',c:[
+ {id:'kidwed',st:'any',cond:kidC,age:[55,75],ti:'아이의 결혼',q:'{K1}가 결혼할 사람을 데려왔다.',sc:'date',c:[
   ['두 팔 벌려 환영한다',o(80,'결혼식에서 펑펑 울었다.',[12,-2,-20,2]),o(20,'사돈과 혼수 문제로 신경전.',[-6,-2,-20,0])],
   ['"직업은 뭔가?"부터 묻는다',o(50,'다행히 반듯한 사람이었다.',[4,0,-20,0]),o(50,'아이와 크게 다퉜다.',[-12,0,-20,0])]]},
- {id:'grandkid',st:'any',rep:1,cond:kidC,age:[58,95],ti:'손주',q:'손주가 놀러 와 품에 쏙 안겼다.',sc:'park:walk',c:[
+ {id:'grandkid',st:'any',rep:1,cond:kidC,age:[58,95],ti:'손주',q:'손주 {G}가 놀러 와 품에 쏙 안겼다.',sc:'park:walk',c:[
   ['용돈을 듬뿍 준다',o(100,'손주가 세상에서 제일 좋다고 했다.',[12,0,-5,0])],
   ['같이 놀이터에 간다',o(80,'허리는 아프지만 행복하다.',[10,-4,0,0]),o(20,'손주를 쫓다 넘어졌다.',[2,-10,0,0])]]},
  {id:'parentsick',st:'any',no:'orphan',age:[42,65],ti:'부모님의 병환',q:'어머니가 쓰러지셨다는 전화를 받았다.',sc:'hospital',c:[
@@ -668,7 +670,7 @@ E.push(
  {id:'menopause',st:'any',age:[48,58],ti:'갱년기',q:'이유 없이 화가 나고 눈물이 난다. 갱년기가 찾아왔다.',sc:'home:rest',c:[
   ['병원에서 상담받는다',o(100,'치료로 많이 나아졌다.',[6,2,-3,0])],
   ['참는다',o(100,'가족과 자주 부딪혔다.',[-10,-2,0,-2])]]},
- {id:'petold',st:'any',req:'pet',age:[34,95],ti:'늙은 고양이',q:'고양이가 나이가 들어 밥을 잘 먹지 않는다.',sc:'home:rest',c:[
+ {id:'petold',st:'any',req:'pet',age:[34,95],ti:'늙은 고양이',q:'고양이 {PET}가 나이가 들어 밥을 잘 먹지 않는다.',sc:'home:rest',c:[
   ['큰 병원에 데려간다',o(60,'수술 후 다시 기운을 차렸다.',[4,0,-15,0]),o(40,'무지개다리를 건넜다.',[-15,0,-15,0],'-pet')],
   ['마지막까지 곁을 지킨다',o(100,'품에서 편히 잠들었다. 고마웠어.',[-12,0,0,0],'-pet')]]},
  // ── 회사원 (입사 2년차 이후) ──
@@ -723,13 +725,13 @@ E.push(
   ['채널을 접고 재취업',o(60,'경력직으로 회사에 들어갔다.',[0,0,0,0],'!company'),o(40,'서류에서 다 떨어졌다. 백수가 됐다.',[-12,0,0,-4],'!jobless')],
   ['끝까지 간다',o(100,'"나는 크리에이터다." 오늘도 카메라를 켠다.',[4,0,0,0])]]},
  // ── 스타트업 대표 ──
- {id:'f_invest',st:'founder',rep:1,no:'series',ti:'투자 제안',q:'벤처캐피털에서 시리즈 A 투자 제안이 왔다. 지분 30%를 달란다.',sc:'meeting',c:[
+ {id:'f_invest',st:'founder',cond:S=>S.biztype=='app',rep:1,no:'series',ti:'투자 제안',q:'벤처캐피털에서 시리즈 A 투자 제안이 왔다. 지분 30%를 달란다.',sc:'meeting',c:[
   ['받는다',o(70,'투자 유치 성공! 회사가 커진다.',[8,-4,20,8],'biz+ series'),o(30,'계약서에 독소 조항이 숨어 있었다.',[-10,0,10,-2])],
   ['내 회사는 내가 지킨다',o(100,'느리지만 내 방식대로 간다.',[2,0,0,0])]]},
  {id:'f_payroll',st:'founder',rep:1,ti:'월급날 전날',q:'내일이 직원 월급날인데 회사 통장 잔고가 모자란다.',sc:'office',c:[
   ['개인 대출로 월급을 준다',o(100,'직원들은 모른다. 내 신용만 줄었다.',[-8,-4,-15,4])],
   ['솔직하게 말하고 미룬다',o(50,'직원들이 이해해줬다.',[-4,0,0,0]),o(50,'핵심 개발자가 퇴사했다.',[-10,0,0,-8],'biz-')]]},
- {id:'f_copy',st:'founder',rep:1,ti:'대기업의 카피',q:'대기업이 우리 서비스를 그대로 베낀 앱을 출시했다.',sc:'meeting',c:[
+ {id:'f_copy',st:'founder',cond:S=>S.biztype=='app',rep:1,ti:'대기업의 카피',q:'대기업이 우리 서비스를 그대로 베낀 앱을 출시했다.',sc:'meeting',c:[
   ['언론에 알린다',o(50,'여론이 우리 편이 됐다!',[6,0,0,10],'biz+'),o(50,'소송에 휘말렸다.',[-12,-4,-15,0])],
   ['차별화로 승부한다',o(60,'충성 고객이 남았다.',[2,-4,0,4]),o(40,'시장을 빼앗겼다.',[-10,0,-10,0],'biz-')]]},
  {id:'f_ipo',st:'founder',req:'series',ti:'상장이냐 매각이냐',q:'상장 심사를 통과했다. 동시에 대기업이 인수를 제안했다.',sc:'boss',c:[
@@ -765,7 +767,7 @@ E.push(
  {id:'r_hobby',st:['retired','fire'],rep:1,ti:'인생 2막',q:'남는 게 시간이다. 무엇을 할까?',sc:'park:walk',c:[
   ['귀농한다',o(60,'텃밭의 고추가 자식 같다.',[10,6,-6,0]),o(40,'벌레와 전쟁 중이다.',[-4,-2,-6,0])],
   ['복지관 수업을 듣는다',o(100,'스마트폰 수업에서 반장이 됐다.',[8,2,0,4])]]},
- {id:'r_kidmoney',st:['retired','fire'],rep:1,cond:kidC,ti:'자식의 부탁',q:'자식이 사업 자금을 빌려달라고 한다.',sc:'home:rest',c:[
+ {id:'r_kidmoney',st:['retired','fire'],rep:1,cond:kidC,ti:'자식의 부탁',q:'{K1}가 사업 자금을 빌려달라고 한다.',sc:'home:rest',c:[
   ['노후 자금을 내준다',o(40,'사업이 잘돼 두 배로 갚았다!',[10,0,10,0]),o(60,'사업이 망했다. 노후 자금도 날아갔다.',[-15,-2,-30,0],'$-5000')],
   ['거절한다',o(100,'서운해하는 눈치다.',[-8,0,0,0])]]},
  {id:'r_travel',st:['retired','fire'],rep:1,ti:'크루즈 세계여행',q:'크루즈 세계여행 패키지 광고를 봤다.',sc:'beach',c:[
@@ -814,14 +816,80 @@ LIFE.push(
  {i:'😷',t:'독감에 걸려 일주일을 앓아누웠다.',d:[-3,-8,0,0],sc:'hospital'},
  {i:'🦷',t:'사랑니가 욱신거린다. 결국 발치했다.',d:[-2,-4,0,0],c:-15,sc:'hospital'},
  {i:'👴',t:'부모님을 모시고 가족 여행을 다녀왔다.',d:[6,0,-2,0],c:-40,sc:'beach',if:S=>!S.fl.orphan},
- {i:'👶',t:'아이가 밤새 울었다. 한숨도 못 잤다.',d:[-2,-4,0,0],if:S=>S.kids&&S.age<45,sc:'home:rest'},
- {i:'🖍️',t:'아이가 나를 그린 그림을 선물했다.',d:[8,0,0,0],if:S=>S.kids&&S.age<55,sc:'home:rest'},
+ {i:'👶',t:'{K}가 밤새 울었다. 한숨도 못 잤다.',d:[-2,-4,0,0],if:S=>S.kids&&S.age<45,sc:'home:rest'},
+ {i:'🖍️',t:'{K}가 나를 그린 그림을 선물했다.',d:[8,0,0,0],if:S=>S.kids&&S.age<55,sc:'home:rest'},
  {i:'🦴',t:'무릎이 시큰거린다. 나이를 실감한다.',d:[-2,-3,0,0],if:S=>S.age>=50,sc:'hospital'},
- {i:'🌸',t:'손주 재롱에 하루가 갔다.',d:[8,0,0,0],if:S=>S.kids&&S.age>=60,sc:'park:walk'},
+ {i:'🌸',t:'손주 {G}의 재롱에 하루가 갔다.',d:[8,0,0,0],if:S=>S.kids&&S.age>=60,sc:'park:walk'},
  {i:'💘',t:'동호회에서 마음이 맞는 사람을 만났다. 자꾸 연락하게 된다.',d:[5,0,0,0],if:S=>S.age<50&&!S.fl.crush&&!S.fl.dating&&!S.fl.married,fl:'crush',w:.8,sc:'bar:friends'},
- {i:'👶',t:'아이가 생겼다! 열 달 뒤, 작은 손이 내 손가락을 꼭 쥐었다.',d:[12,-6,-6,0],if:S=>S.fl.married&&S.age<42&&S.kids<3,fl:'+kid',w:.5,sc:'home:rest'},
- {i:'💍',t:'오래 만난 연인과 결혼했다! 작은 예식장에서 평생을 약속했다.',d:[15,-2,-10,4],if:S=>S.fl.dating&&S.age>=28,fl:'married -dating',w:.4,sc:'date'},
+ {i:'👶',t:'아이가 생겼다! 열 달 뒤 태어난 {K}가 내 손가락을 꼭 쥐었다.',d:[12,-6,-6,0],if:S=>S.fl.married&&S.age<42&&S.kids<3,fl:'+kid',w:.5,sc:'home:rest'},
+ {i:'💍',t:'오래 만난 {P}와 결혼했다! 작은 예식장에서 평생을 약속했다.',d:[15,-2,-10,4],if:S=>S.fl.dating&&S.age>=28,fl:'married -dating',w:.4,sc:'date'},
  {i:'👓',t:'노안이 왔다. 휴대폰 글씨를 키웠다.',d:[-2,0,0,0],if:S=>S.age>=45&&S.age<60,sc:'home:rest'});
+// ── 이름: 주인공·연인·자녀·손주·반려동물만 (모두 모음으로 끝나 조사 '와/가/를'이 자연스럽게 붙음) ──
+const NAMES={me:['Alex','Jamie','Chris','Riley','Toby','Casey','Kai','Jay','Robbie','Andy'],
+ partner:['Emma','Olivia','Mia','Chloe','Sophie','Lily','Grace','Ella','Ruby','Hannah'],
+ kid:['Noah','Leo','Theo','Luca','Ava','Zoe','Nora','Ivy','Lucy','Milo','Remy','Lena'],
+ grand:['Bobby','Molly','Eddie','Daisy','Ollie','Rosie','Benny','Josie'],
+ pet:['Coco','Mochi','Luna','Oreo','Tofu','Mango','Bella','Momo']};
+// 창업 종류: names=회사 이름 후보, sc=기본 장면
+const BIZ={app:{n:'IT 앱 스타트업',names:['Nova Labs','Pixel Bee','Bluefin','Sproutly','Orbie'],sc:'office'},
+ cafe:{n:'동네 카페',names:['Cafe Haru','Moon Latte','Mellow','Bean Story','Cafe Sunny'],sc:'cafe'},
+ shop:{n:'온라인 쇼핑몰',names:['Mood Shoppy','Ollie Store','Daily Mood','Little Lulu','Pick Me'],sc:'home:studio'}};
+// 연차·휴가: 연차가 있는 직업은 days만큼 차감, c=비용(만원)
+const VAC=[
+ {id:'day',n:'하루 쉬기',i:'🛌',days:1,c:0,d:[6,6,0,0],t:'하루 종일 푹 쉬었다. 휴대폰 알림은 전부 꺼 뒀다.',sc:'home:rest'},
+ {id:'bridge',n:'국내 여행 3일',i:'🚄',days:3,c:-60,d:[12,8,-1,0],t:'징검다리 연휴로 제주도에 다녀왔다.',sc:'beach'},
+ {id:'summer',n:'여름휴가 5일',i:'🏖️',days:5,c:-120,d:[16,10,-2,-1],t:'5일짜리 여름휴가! 바다에서 아무 생각 없이 쉬었다.',sc:'beach'}];
+E.push(
+ // 직접 고르는 창업 (사이드 패널 버튼으로만 등장)
+ {id:'found_start',manual:1,st:'any',ti:'창업 준비',q:'{ME}, 드디어 내 사업을 시작한다. 무엇을 해볼까?',sc:'cafe',c:[
+  ['IT 앱 스타트업 (자본금 1,000만)',o(100,'노트북 한 대로 법인을 세웠다. 회사 이름은 {BIZ}.',[8,-4,-4,2],'!found biz:app $-1000')],
+  ['동네 카페 (자본금 5,000만)',o(100,'인테리어를 마치고 카페 문을 열었다. 간판은 {BIZ}.',[10,-3,-8,2],'!found biz:cafe $-5000')],
+  ['온라인 쇼핑몰 (자본금 800만)',o(100,'쇼핑몰을 오픈했다. 브랜드 이름은 {BIZ}. 첫 주문을 기다린다.',[6,-2,-3,2],'!found biz:shop $-800')]]},
+ // 카페
+ {id:'fc_rent',st:'founder',rep:1,cond:S=>S.biztype=='cafe',ti:'임대료 인상',q:'건물주가 재계약 조건으로 월세를 40% 올리겠다고 한다.',sc:'cafe',c:[
+  ['울며 겨자 먹기로 계약한다',o(100,'남는 게 없다. 그래도 단골은 지켰다.',[-8,0,-8,0])],
+  ['더 싼 곳으로 이전한다',o(50,'새 자리가 오히려 유동 인구가 많았다!',[8,-6,-4,4],'biz+'),o(50,'단골들이 따라오지 않았다.',[-10,-6,-6,-2],'biz-')]]},
+ {id:'fc_sns',st:'founder',rep:1,cond:S=>S.biztype=='cafe',ti:'신메뉴 개발',q:'시그니처 메뉴가 필요하다. 요즘 SNS에서 뜨는 디저트를 만들어볼까?',sc:'cafe',c:[
+  ['SNS용 화려한 디저트',o(55,'사진이 퍼지면서 줄 서는 카페가 됐다!',[10,-6,10,8],'biz+'),o(45,'반짝 인기 후 금방 잊혔다.',[-6,-4,-4,0])],
+  ['기본에 충실한 커피',o(100,'동네 단골이 꾸준히 늘었다.',[4,0,4,4])]]},
+ {id:'fc_franchise',st:'founder',cond:S=>S.biztype=='cafe'&&S.biz>=40,ti:'프랜차이즈 제안',q:'"{BIZ}" 가맹점을 내고 싶다는 문의가 쏟아진다.',sc:'meeting',c:[
+  ['가맹 사업을 시작한다',o(50,'전국 50호점 돌파! 사업이 커졌다.',[12,-8,25,10],'biz+ biz+ series'),o(50,'가맹점 관리에 지쳐 본점까지 흔들렸다.',[-12,-10,-10,-6],'biz-')],
+  ['한 매장만 지킨다',o(100,'내 커피는 내가 내린다.',[6,0,0,2])]]},
+ {id:'fc_staff',st:'founder',rep:1,cond:S=>S.biztype!='app',ti:'알바생 문제',q:'주말 알바생이 오늘도 연락 없이 안 나왔다.',sc:'cafe',c:[
+  ['직접 하루 종일 일한다',o(100,'발바닥이 불난다. 그래도 가게는 돌아갔다.',[-4,-10,2,2])],
+  ['시급을 올려 좋은 사람을 뽑는다',o(70,'성실한 직원이 들어왔다. 숨통이 트인다.',[8,4,-6,2]),o(30,'돈만 더 나갔다.',[-6,0,-6,0])]]},
+ // 온라인 쇼핑몰
+ {id:'fs_hit',st:'founder',rep:1,cond:S=>S.biztype=='shop',ti:'대박 상품 발견',q:'해외에서 뜨는 상품을 발견했다. 재고를 대량으로 사둘까?',sc:'home:studio',c:[
+  ['재고를 왕창 산다',o(45,'품절 대란! 매출이 열 배가 됐다.',[12,-6,15,6],'biz+'),o(55,'유행이 한 달 만에 끝났다. 창고가 꽉 찼다.',[-12,-4,-15,0],'biz-')],
+  ['소량만 테스트한다',o(100,'적당히 팔렸다. 안전하다.',[2,0,3,2])]]},
+ {id:'fs_review',st:'founder',rep:1,cond:S=>S.biztype=='shop',ti:'악성 리뷰',q:'"사진이랑 완전 다름. 사기꾼" 별점 1점 리뷰가 맨 위에 걸렸다.',sc:'home:studio',c:[
+  ['정중하게 답글과 환불',o(70,'다른 고객들이 대응이 멋지다고 칭찬했다.',[2,0,-2,6]),o(30,'블랙컨슈머였다. 환불만 해줬다.',[-6,0,-3,0])],
+  ['반박 답글을 단다',o(30,'속이 시원했다.',[4,0,0,-2]),o(70,'캡처가 커뮤니티에 돌았다. 불매 운동.',[-12,0,-6,-12],'biz-')]]},
+ {id:'fs_live',st:'founder',rep:1,cond:S=>S.biztype=='shop',ti:'라이브 커머스',q:'라이브 방송으로 물건을 팔아보자는 제안을 받았다. 직접 출연해야 한다.',sc:'home:studio',c:[
+  ['직접 출연한다',o(55,'입담이 터졌다! 방송 1시간 만에 완판.',[10,-4,12,8],'biz+'),o(45,'시청자 12명. 손이 떨렸다.',[-8,-2,0,-2])],
+  ['쇼호스트를 섭외한다',o(100,'비용은 들었지만 매출은 올랐다.',[2,0,4,2])]]},
+ {id:'fs_platform',st:'founder',rep:1,cond:S=>S.biztype=='shop',ti:'대형 플랫폼 입점',q:'대형 쇼핑 플랫폼이 입점을 제안했다. 대신 수수료가 25%다.',sc:'meeting',c:[
+  ['입점한다',o(70,'주문이 폭발했다. 남는 건 적지만 규모가 커졌다.',[4,-6,6,4],'biz+'),o(30,'수수료에 광고비까지. 팔수록 손해다.',[-8,-4,-8,0])],
+  ['자사몰만 키운다',o(100,'느리지만 내 고객이 쌓인다.',[2,0,0,2])]]},
+ // 앱 스타트업
+ {id:'fa_server',st:'founder',rep:1,cond:S=>S.biztype=='app',ti:'서버 다운',q:'앱이 갑자기 입소문을 탔다. 트래픽이 몰려 서버가 터지기 직전이다.',sc:'office',c:[
+  ['밤새 서버를 증설한다',o(70,'버텼다! 신규 가입자 10만 명.',[8,-10,-4,8],'biz+'),o(30,'결국 다운. "망한 앱" 소리를 들었다.',[-12,-10,-4,-6])],
+  ['가입을 잠시 막는다',o(100,'안정은 지켰지만 기회는 놓쳤다.',[-2,0,0,0])]]},
+ {id:'fa_leak',st:'founder',sp:1,cond:S=>S.biztype=='app',ti:'개인정보 유출',q:'해킹으로 회원 정보가 유출됐다는 제보가 들어왔다.',sc:'meeting',c:[
+  ['즉시 공지하고 사과한다',o(70,'빠른 대응으로 신뢰를 지켰다.',[-6,-4,-6,4]),o(30,'과징금이 나왔다.',[-10,-4,-15,-4],'biz-')],
+  ['조용히 수습한다',o(30,'아무도 몰랐다…',[-4,0,0,0]),o(70,'언론 보도로 터졌다. 은폐 논란.',[-18,0,-15,-15],'biz- biz-')]]},
+ {id:'fa_hire',st:'founder',rep:1,cond:S=>S.biztype=='app',ti:'개발자 구인난',q:'핵심 개발자가 대기업으로 이직하겠다고 한다.',sc:'office',c:[
+  ['스톡옵션으로 붙잡는다',o(70,'남기로 했다. 팀이 단단해졌다.',[6,0,-4,4]),o(30,'결국 떠났다.',[-8,0,0,-2],'biz-')],
+  ['보내주고 새로 뽑는다',o(100,'인수인계에 석 달이 걸렸다.',[-6,-6,-4,0])]]},
+ // 카페·쇼핑몰 매각
+ {id:'f_exit',st:'founder',cond:S=>S.biztype!='app'&&S.biz>=50,ti:'인수 제안',q:'대기업이 "{BIZ}"를 사고 싶다고 한다.',sc:'boss',c:[
+  ['매각한다',o(100,'계약서에 도장을 찍었다. 큰돈이 들어왔다.',[12,0,30,4],'$30000 !fire')],
+  ['계속 키운다',o(60,'회사가 더 커졌다.',[6,-6,10,6],'biz+'),o(40,'경기 침체로 가치가 반토막 났다.',[-10,-4,-10,0],'biz-')]]});
+LIFE.push(
+ {i:'👶',t:'손주 {GN}가 태어났다! 작은 손이 내 손가락을 꼭 쥐었다.',d:[12,0,-3,0],if:S=>S.kids&&S.age>=55&&S.gn.length<3,fl:'+grand',w:.5,sc:'home:rest'},
+ {i:'☕',t:'{BIZ}에 단골손님이 늘었다.',d:[4,0,2,2],if:S=>S.job=='founder'&&S.biztype=='cafe',sc:'cafe'},
+ {i:'📦',t:'{BIZ} 주문이 밀려 밤새 포장했다.',d:[2,-4,3,0],if:S=>S.job=='founder'&&S.biztype=='shop',sc:'home:studio'},
+ {i:'💻',t:'{BIZ} 앱 업데이트를 출시했다. 리뷰가 좋다.',d:[4,-2,0,3],if:S=>S.job=='founder'&&S.biztype=='app',sc:'office'});
 /*END DATA*/
 
 const $=s=>document.querySelector(s), app=$('#app'), side=$('#side'), layout=$('#layout');
@@ -896,7 +964,8 @@ const R=(x,y,w,h,c)=>{g.fillStyle=c;g.fillRect(x,y,w,h)};
 setInterval(()=>{if(!RM&&$('#scene')){FR++;drawScene()}},100);
 const parseSc=s=>{const [id,v]=(s||'office').split(':');return{id,v}};
 const EVS={};for(const [k,v] of Object.entries(SC_EV))for(const id of v.split(' '))EVS[id]=k;
-const evScene=e=>parseSc(e.sc||EVS[e.id]||((e.t||[]).includes('dinner')?'bar:company':JOBS[S.job].sc));
+const jobSc=()=>S.job=='founder'&&BIZ[S.biztype]?BIZ[S.biztype].sc:JOBS[S.job].sc;
+const evScene=e=>parseSc(e.sc||EVS[e.id]||((e.t||[]).includes('dinner')?'bar:company':jobSc()));
 const hairByAge=()=>S.age>=72?'#e9ecef':S.age>=55?'#9a9a9a':'#2b1d14';
 const kid=(x,y,c)=>{R(x+1,y,6,2,'#2b1d14');R(x+1,y+2,6,5,'#f1c27d');R(x+2,y+4,1,1,'#222');R(x+5,y+4,1,1,'#222');R(x,y+7,8,7,c);R(x+1,y+14,2,4,'#343a40');R(x+5,y+14,2,4,'#343a40')};
 const kids=(x,y)=>{for(let i=0;i<Math.min(S.kids||0,3);i++)kid(x+i*11,y+((FR>>2)+i)%2,['#ffd43b','#74c0fc','#ff8787'][i])};
@@ -1198,8 +1267,8 @@ function newRun(){
  const pi=a=>a.indexOf(wpick(a,x=>x.w));
  S={phase:'roll',ci:pi(C),di:pi(D),bi:pi(B),turn:0,combo:0,used:new Set(),cool:{},res:null,fl:{},dead:null,react:null,
   cash:300,inv:0,invIn:0,mode:'save',rt:'rest',wk:'sleep',ill:[],log:[],own:{},pending:[],scene:{id:'office'},busy:false,
-  job:'company',rank:0,maxRank:0,leave:11,kids:0,fame:0,biz:0,ub:0,pension:0,payAcc:0,mon:0,jobsEver:new Set(['company']),career:[]};
- S.age0=26+Math.floor(Math.random()*4);S.age=S.age0;
+  job:'company',rank:0,kn:[],gn:[],forceEv:null,maxRank:0,leave:11,kids:0,fame:0,biz:0,ub:0,pension:0,payAcc:0,mon:0,jobsEver:new Set(['company']),career:[]};
+ S.age0=26+Math.floor(Math.random()*4);S.age=S.age0;S.myn=pickArr(NAMES.me);
  layout.className='layout';side.innerHTML='';
  const [lo,hi]=C[S.ci].sal;S.sal=Math.round((lo+Math.random()*(hi-lo))/100)*100;
  S.st=[70,70,40,40].map((v,k)=>clamp(v+C[S.ci].s[k]+D[S.di].s[k]+B[S.bi].s[k],15,95));
@@ -1227,14 +1296,20 @@ function rollDone(){
 /* 시간: 1년차는 2주 단위, 이후 나이에 따라 반년/1년/2년 단위 */
 const stepMonths=()=>S.turn<T1?.5:S.age<40?6:S.age<60?12:24;
 const dateStr=()=>{const m=2+Math.floor(S.mon);return `${2026+Math.floor(m/12)}년 ${m%12+1}월`};
-const jobLabel=()=>S.job=='company'?`${C[S.ci].n} ${RANKS[S.rank]}`:JOBS[S.job].n;
+const jobLabel=()=>S.job=='company'?`${C[S.ci].n} ${RANKS[S.rank]}`:S.job=='founder'&&S.bizname?`${S.bizname} 대표`:JOBS[S.job].n;
+// 이름 치환: 처음 필요할 때 랜덤으로 정하고 계속 유지
+const newName=k=>{const used=[S.myn,S.pn,S.exn,S.petn,...(S.kn||[]),...(S.gn||[])];return pickArr(NAMES[k].filter(n=>!used.includes(n)))||pickArr(NAMES[k])};
+const nm=t=>t==null?t:String(t).replace(/\{(ME|P|EX|K1|KS|K|GN|G|PET|BIZ)\}/g,(_,k)=>k=='ME'?S.myn:k=='P'?S.pn||(S.pn=newName('partner')):k=='EX'?S.exn||(S.exn=newName('partner'))
+ :k=='K'?S.kn[S.kn.length-1]||'아이':k=='K1'?S.kn[0]||'아이':k=='KS'?S.kn.join('·')||'아이':k=='GN'?S.gn[S.gn.length-1]||'손주'
+ :k=='G'?(S.gn.length?pickArr(S.gn):(S.gn.push(newName('grand')),S.gn[0])):k=='PET'?S.petn||(S.petn=newName('pet')):S.bizname||'내 가게');
 const hasLeave=()=>!!JOBS[S.job].leave;
 function pickEvent(){
+ if(S.forceEv){const f=E.find(e=>e.id==S.forceEv);S.forceEv=null;return f}
  if(FIX[S.turn]&&S.turn<=T1&&S.job=='company')return E.find(e=>e.id==FIX[S.turn]);
  const tg=new Set(S.job=='company'?[...C[S.ci].t,...D[S.di].t,...B[S.bi].t]:[]);
  const has=f=>[].concat(f||[]).every(x=>S.fl[x]),none=f=>![].concat(f||[]).some(x=>S.fl[x]);
  const stage=e=>e.st||(ANY_EV.has(e.id)?'any':'company');
- const base=e=>!e.fix&&(stage(e)=='any'||[].concat(stage(e)).includes(S.job))&&has(e.req)&&none(e.no)&&(!e.any||e.any.some(x=>S.fl[x]))
+ const base=e=>!e.fix&&!e.manual&&(stage(e)=='any'||[].concat(stage(e)).includes(S.job))&&has(e.req)&&none(e.no)&&(!e.any||e.any.some(x=>S.fl[x]))
   &&(!e.only||tg.has(e.only))&&(!e.cond||e.cond(S))&&(!e.age||S.age>=e.age[0]&&S.age<=e.age[1])&&(S.turn>T1||S.turn>=(e.min||0));
  const fresh=e=>e.rep?!(S.cool[e.id]>S.turn-8):!S.used.has(e.id);
  let pool=E.filter(e=>base(e)&&fresh(e));if(!pool.length)pool=E.filter(e=>base(e)&&e.rep);if(!pool.length)pool=[E.find(e=>e.id=='filler')];
@@ -1259,8 +1334,8 @@ function choose(i){
  if(s>0){S.combo++;if(S.combo%3==0&&dead()<0){bonus=true;S.st[0]=clamp(S.st[0]+5,0,100);S.st[3]=clamp(S.st[3]+3,0,100)}}else S.combo=0;
  setFlags(r.f);
  S.cash+=r.d[2]*8; // 통장 스탯 변화는 현금에도 반영
- S.log.push({d:dateStr(),i:'📝',t:`${S.ev.ti} → ${ch[0]}`});
- S.res={t:r.t,d:r.d,ch:ch[0],s,bonus,after:S.st.slice(),mo:stepMonths()};S.react={type:s>0?'good':s<0?'bad':'',f:FR};
+ S.log.push({d:dateStr(),i:'📝',t:nm(`${S.ev.ti} → ${ch[0]}`)});
+ S.res={t:nm(r.t),d:r.d,ch:ch[0],s,bonus,after:S.st.slice(),mo:stepMonths()};S.react={type:s>0?'good':s<0?'bad':'',f:FR};
  const keep=S.scene;S.res.life=lifeTurn();S.scene=keep;
  renderPlay();
  const card=$('#evc');
@@ -1277,7 +1352,7 @@ function setJob(j){
  if(j=='gov'){S.sal=3000;S.leave=15}
  if(j=='jobless')S.ub=['company','gov'].includes(from)?6:0;
  if(j=='tube')S.fame=Math.max(S.fame,30);
- if(j=='founder')S.biz=Math.max(S.biz,20);
+ if(j=='founder'){S.biz=Math.max(S.biz,20);if(!S.biztype){S.biztype='shop';S.bizname=pickArr(BIZ.shop.names)}}
  if(j=='retired')S.pension=from=='gov'?250:from=='company'?Math.round(90+S.sal/90):80; // 국민연금·공무원연금
  S.career.push(j=='company'?`${C[S.ci].n} 재입사`:JOBS[j].n);
  S.log.push({d:dateStr(),i:'🔀',t:`인생의 전환: ${JOBS[j].n}`});
@@ -1293,27 +1368,30 @@ const setFlags=f=>{if(f)for(const x of f.split(' ')){
  if(x=='!move'||x=='move'){S.sal=Math.round(S.sal*1.25/100)*100;S.career.push('이직');S.log.push({d:dateStr(),i:'💼',t:'이직 성공. 연봉이 올랐다.'})}
  else if(x[0]=='!')setJob(JOBMAP[x.slice(1)]);
  else if(x[0]=='$')S.cash+=+x.slice(1);
+ else if(x.startsWith('biz:')){S.biztype=x.slice(4);S.bizname=pickArr(BIZ[S.biztype].names);const c=S.career;if(c[c.length-1]==JOBS.founder.n)c[c.length-1]=`${BIZ[S.biztype].n} 창업`}
+ else if(x=='+grand')S.gn.push(newName('grand'));
  else if(x=='~break'){
   if(S.fl.married){const loss=Math.max(0,Math.round(S.cash/2));S.cash-=loss;S.fl.divorced=1;S.log.push({d:dateStr(),i:'⚖️',t:`이혼. 재산분할로 ${won(loss)}을 잃었다.`})}
-  ['married','dating','office','crush','affair'].forEach(k=>delete S.fl[k]);S.fl.ex=1;S.scene={id:'breakup'};
+  ['married','dating','office','crush','affair'].forEach(k=>delete S.fl[k]);S.fl.ex=1;S.exn=S.pn;delete S.pn;S.scene={id:'breakup'};
  }
  else if(x=='paycut')S.sal=Math.round(S.sal*.8/100)*100;
  else if(x=='pay1y')S.cash+=S.sal;
  else if(x=='pay2y')S.cash+=S.sal*2;
  else if(x=='promo'){if(S.rank<4)promote()}
  else if(x=='exec'){while(S.rank<5&&promote());S.sal=Math.round(S.sal*1.3/100)*100}
- else if(x=='+kid')S.kids++;
+ else if(x=='+kid'){S.kids++;S.kn.push(newName('kid'))}
  else if(x=='fame+')S.fame=Math.min(100,S.fame+15);else if(x=='fame-')S.fame=Math.max(0,S.fame-15);
  else if(x=='biz+')S.biz=Math.min(100,S.biz+15);else if(x=='biz-')S.biz=Math.max(0,S.biz-15);
- else if(x[0]=='-')delete S.fl[x.slice(1)];
+ else if(x[0]=='-'){delete S.fl[x.slice(1)];if(x=='-pet')delete S.petn}
+ else if(x=='dating'&&S.fl.ex&&S.exn&&!S.pn){S.pn=S.exn;S.fl.dating=1} // 전 애인과 재회
  else{S.fl[x]=1;if(x=='married')S.everMarried=1}}};
 const pickArr=a=>a[Math.random()*a.length|0];
 const gauss=(m,s)=>m+s*2*(Math.random()+Math.random()+Math.random()-1.5);
 // 월 수익률
 const MODE={none:{n:'안 함',r:()=>0},save:{n:'예적금',r:()=>.003},stock:{n:'주식',r:()=>gauss(.004,.04)},coin:{n:'코인',r:()=>Math.random()<.03?-.4:gauss(.01,.09)}};
 const won=x=>(x<0?'-':'')+(Math.abs(x)>=10000?(Math.abs(x)/10000).toFixed(1)+'억':Math.abs(Math.round(x)).toLocaleString()+'만')+'원';
-const relText=()=>S.fl.married?'기혼 💍'+(S.fl.office?' (사내 결혼)':''):S.fl.dating?'연애 중 ❤️'+(S.fl.office?' (사내연애)':''):S.fl.crush?'썸 타는 중 💘':S.fl.divorced?'돌싱 💔':'솔로';
-const famText=()=>[S.fl.orphan?'부모님(故)':'부모님',S.fl.married&&'배우자',S.kids&&`자녀 ${S.kids}명`,S.fl.pet&&'반려묘 🐈'].filter(Boolean).join(', ');
+const relText=()=>S.fl.married?`기혼 💍 ${nm('{P}')}`+(S.fl.office?' (사내 결혼)':''):S.fl.dating?`연애 중 ❤️ ${nm('{P}')}`+(S.fl.office?' (사내연애)':''):S.fl.crush?`썸 💘 ${nm('{P}')}`:S.fl.divorced?'돌싱 💔':'솔로';
+const famText=()=>[S.fl.orphan?'부모님(故)':'부모님',S.fl.married&&`배우자 ${nm('{P}')}`,S.kn.length&&`자녀 ${S.kn.join('·')}`,S.gn.length&&`손주 ${S.gn.join('·')}`,S.fl.pet&&`반려묘 ${nm('{PET}')}`].filter(Boolean).join(', ');
 // 월 수입(만원)과 월 생활비
 function monthlyIncome(){
  switch(S.job){
@@ -1331,8 +1409,8 @@ function die(cause){S.dead={cause,age:Math.floor(S.age)}}
 // 선택 후 자동으로 흘러가는 시간: 위기, 수입, 퇴근 후, 주말, 예정된 일, 투자, 질병, 사건, 나이 듦, 죽음
 function lifeTurn(){
  const L=[],mo=stepMonths(),yrs=mo/12;
- const push=(i,t,sc,big)=>{L.push({i,t,d:[0,0,0,0],c:0,sc,big,st:S.st.slice()});S.log.push({d:dateStr(),i,t})};
- const add=(i,t,d=[0,0,0,0],c=0,sc)=>{if(S.dead)return;S.st=S.st.map((v,k)=>clamp(v+d[k],0,100));S.cash+=c;L.push({i,t,d,c,sc,st:S.st.slice()});S.log.push({d:dateStr(),i,t});crisis()};
+ const push=(i,t,sc,big)=>{t=nm(t);L.push({i,t,d:[0,0,0,0],c:0,sc,big,st:S.st.slice()});S.log.push({d:dateStr(),i,t})};
+ const add=(i,t,d=[0,0,0,0],c=0,sc)=>{if(S.dead)return;t=nm(t);S.st=S.st.map((v,k)=>clamp(v+d[k],0,100));S.cash+=c;L.push({i,t,d,c,sc,st:S.st.slice()});S.log.push({d:dateStr(),i,t});crisis()};
  // 스탯이 0이 되면 끝이 아니라 인생의 위기. 체력 0은 나이에 따라 죽음
  function crisis(){for(const k of [1,0,3,2]){if(S.dead||S.st[k]>0)continue;
   if(k==1){
@@ -1355,7 +1433,7 @@ function lifeTurn(){
   const inc=monthlyIncome()*months,base=livingCost()*months,cost=Math.round(base+Math.max(0,inc-base)*.5); // 수입이 늘면 씀씀이도 는다S.cash+=inc-cost;if(S.ub)S.ub=Math.max(0,S.ub-months);
   let t=months==1?`${hasLeave()?'월급날! 실수령':'이번 달 수입'} ${won(inc)}, 생활비 ${won(cost)}.`:`${months>=12?months/12+'년':months+'개월'} 동안 수입 ${won(inc)}, 생활비 ${won(cost)}.`;
   if(S.mode!='none'&&S.cash>0&&inc>cost){const a=Math.min(S.cash,Math.round((inc-cost)*.5)); /* 남은 돈의 절반을 투자 */S.cash-=a;S.inv+=a;S.invIn+=a;t+=` ${won(a)}을 ${MODE[S.mode].n}에 넣었다.`}
-  add(inc>=0?'💸':'🔻',S.cash<0?t+' 마이너스 통장이다…':t,S.cash<0?[-2,0,-2,0]:[1,0,2,0],0,JOBS[S.job].sc);
+  add(inc>=0?'💸':'🔻',S.cash<0?t+' 마이너스 통장이다…':t,S.cash<0?[-2,0,-2,0]:[1,0,2,0],0,jobSc());
  }
  // 백수 기간에는 구직 활동 끝에 재취업할 수 있다
  if(S.job=='jobless'&&S.age<60&&!S.dead&&Math.random()<Math.min(.8,.3*Math.max(1,mo/3))){setJob('company');S.sal=Math.round(S.sal*.9/100)*100;add('📨','구직 끝에 작은 회사에 재취업했다. 다시 출근이다.',[8,0,2,2],0,'office')}
@@ -1363,7 +1441,7 @@ function lifeTurn(){
  const R=ROUT[S.rt],paired=S.fl.dating||S.fl.married,pass=[0,0,0,0],when=hasLeave()?'퇴근 후':'저녁';
  for(const it of SHOP)if(S.own[it.id]&&it.pass)for(const key of ['all',S.rt])(it.pass[key]||[]).forEach((v,k)=>pass[k]+=v);
  const plus=d=>d.map((v,k)=>v+pass[k]);
- if(S.rt=='date'&&paired)add('💑',`${when} ${S.fl.married?'배우자와 야경 데이트를 했다.':'연인과 데이트했다.'}`,plus([6,0,-1,0]),-15,'date');
+ if(S.rt=='date'&&paired)add('💑',`${when} ${S.fl.married?'배우자 {P}와 야경 데이트를 했다.':'{P}와 데이트했다.'}`,plus([6,0,-1,0]),-15,'date');
  else{const tt=pickArr(R.t),[txt,sc]=Array.isArray(tt)?tt:[tt,R.sc];add(R.i,`${when} ${R.n}: ${txt}`,plus(R.d),R.c,sc)}
  if(!paired&&!S.fl.crush&&S.age<50){
   if(S.rt=='date'&&Math.random()<.18){S.fl.crush=1;add('💘','모임에서 만난 사람과 연락이 이어진다. 설렌다.',[5,0,0,0],0,'bar:friends')}
@@ -1373,11 +1451,12 @@ function lifeTurn(){
  if(!paired&&!S.fl.crush&&S.age<50&&S.wk=='friends'&&Math.random()<.12){S.fl.crush=1;add('💘','친구가 데려온 지인과 말이 잘 통했다. 연락처를 주고받았다.',[5,0,0,0],0,'bar:friends')}
  // 주말
  const W=WKND[S.wk&&(!WKND[S.wk].job||WKND[S.wk].job==S.job)?S.wk:'sleep'],every=mo>=6?'주말마다 ':'주말: ';
- if(S.wk=='outing'&&S.kids)add('🎡',`${every}아이와 놀이공원에 갔다. 웃음소리가 가득했다.`,[6,0,0,0],-10,'park:walk');
- else if(S.wk=='outing'&&paired)add('🌳',`${every}${S.fl.married?'배우자':'연인'}와 손잡고 근교 나들이.`,[6,2,0,0],-10,'park:walk');
+ if(S.wk=='outing'&&S.kids)add('🎡',`${every}{KS}와 놀이공원에 갔다. 웃음소리가 가득했다.`,[6,0,0,0],-10,'park:walk');
+ else if(S.wk=='outing'&&paired)add('🌳',`${every}{P}와 손잡고 근교 나들이.`,[6,2,0,0],-10,'park:walk');
  else add(W.i,every+pickArr(W.t),W.d,W.c,W.sc);
  // 예정된 일 (쇼핑·여행)
- for(const p of S.pending)add(p.i,p.t,p.d,0,p.sc);S.pending=[];
+ for(const p of S.pending){add(p.i,p.t,p.d,p.c||0,p.sc);if(p.vac&&S.job=='company'&&Math.random()<.25)add('😒','휴가 복귀 첫날, 팀장님이 "푹 쉬었나 봐?" 하며 일을 몰아줬다.',[-3,-2,0,-1],0,'office')}
+ S.pending=[];
  // 투자: 기간만큼 복리로
  if(S.inv>0&&S.mode!='none'&&!S.dead){
   let f=1;for(let n=Math.ceil(mo);n--;)f*=1+MODE[S.mode].r()*(mo<1?mo:1);
@@ -1389,11 +1468,12 @@ function lifeTurn(){
  // 인생 사건: 기본 50%, 기간이 길면 하나 더
  for(const chance of [.5,mo>=6?.4:.15])if(Math.random()<chance&&!S.dead){
   const x=wpick(LIFE.filter(x=>!x.if||x.if(S)),x=>x.w||1);
-  if(x.ill)addIll(x.ill);else{add(x.i,x.t,x.d,x.c||0,x.fl=='~break'?'breakup':x.sc);setFlags(x.fl)}
+  if(x.ill)addIll(x.ill);else{setFlags(x.fl);add(x.i,x.t,x.d,x.c||0,x.fl=='~break'?'breakup':x.sc)}
  }
  // 시간 경과: 새해(연차·승진·정년), 나이 듦
  const y0=Math.floor(S.mon/12);S.mon+=mo;S.age=S.age0+S.mon/12;const ny=Math.floor(S.mon/12)-y0;
  if(ny>0&&!S.dead){
+  if(S.job=='company'&&S.leave>0){const pay=Math.round(S.sal/250*S.leave);add('🧾',`못 쓴 연차 ${S.leave}일은 연차수당으로 받았다.`,[0,0,1,0],pay,'office')}
   if(hasLeave())S.leave=15;
   if(S.job=='company'){
    if(S.rank<4&&Math.random()<S.st[3]/110*Math.min(1,ny*.6)){promote();add('🎉',`연말 인사: ${RANKS[S.rank]} 승진! 연봉 ${S.sal.toLocaleString()}만원.`,[8,0,2,4],0,'boss')}
@@ -1438,12 +1518,16 @@ function renderSide(){
   <dt>보유</dt><dd>${SHOP.filter(it=>S.own[it.id]).map(it=>it.i+' '+it.n).join(', ')||'-'}</dd></dl>
   ${live?`<p class=lbl>투자 성향 (남은 돈의 절반 자동 투자)</p><div class=seg>${seg(MODE,S.mode,'md')}</div>`:''}</section>
  <section class="card pane"><h3 class=ph>🏠 인생</h3><dl class=kv>
-  <dt>나이</dt><dd>${Math.floor(S.age)}세</dd><dt>직업</dt><dd>${jobLabel()}</dd>
+  <dt>이름</dt><dd>${S.myn}</dd><dt>나이</dt><dd>${Math.floor(S.age)}세</dd><dt>직업</dt><dd>${jobLabel()}</dd>
   ${hasLeave()?`<dt>연차</dt><dd>${S.leave}일 남음</dd>`:''}
   <dt>연애</dt><dd>${relText()}</dd><dt>가족</dt><dd>${famText()}</dd>
   <dt>건강</dt><dd class="${S.ill.length?'neg':''}">${S.ill.length?S.ill.map(v=>`${v.n} (${v.left}턴)`).join(', '):'양호'}</dd></dl>
   ${live?`<p class=lbl>${hasLeave()?'퇴근 후':'저녁'} 루틴</p><div class=seg>${seg(ROUT,S.rt,'rt')}</div>
   <p class=lbl>주말</p><div class=seg>${seg(WKND,S.wk,'wk')}</div>`:''}</section>
+ ${live?`<section class="card pane"><h3 class=ph>🏖️ ${hasLeave()?'연차·휴가':'휴식'} ${hasLeave()?`<small class=mut>남은 연차 ${S.leave}일</small>`:''}</h3><div class=seg>${VAC.map(v=>{
+  const lack=hasLeave()&&S.leave<v.days,dis=S.busy||lack||S.pending.some(p=>p.vac);
+  return `<button class=sg data-vac=${v.id} ${dis?'disabled':''} title="${lack?'연차 부족':v.t}">${v.i} ${v.n}${hasLeave()?` (${v.days}일)`:''}</button>`}).join('')}</div>
+  ${['company','gov','jobless','tube','chicken'].includes(S.job)&&S.age<60?`<p class=lbl>인생 결정</p><button class=sg data-act=found ${S.busy||S.forceEv||S.ev&&S.ev.id=='found_start'&&!S.res?'disabled':''}>🚀 ${['company','gov'].includes(S.job)?'퇴사하고 ':''}창업하기</button><small class=mut> 자본금 800만~5,000만</small>`:''}</section>`:''}
  ${live?`<section class="card pane"><h3 class=ph>🛍️ 쇼핑 <small class=mut>사면 다음 나레이션에 반영</small></h3><ul class=shop>${SHOP.map(it=>{
   const owned=S.own[it.id],why=it.pr&&!(S.fl.dating||S.fl.married)?'연인이 있어야 살 수 있음':it.leave&&hasLeave()&&S.leave<it.leave?`연차 부족 (${S.leave}/${it.leave}일)`:'';
   return `<li><span>${it.i} <b>${it.n}</b><small>${why||it.x}</small></span>${owned?'<em>보유 중</em>':S.pending.some(p=>p.id==it.id)?'<em>예정</em>':`<button class=buy data-buy=${it.id} ${S.busy||why||S.cash<it.p?'disabled':''}>${won(it.p)}</button>`}</li>`}).join('')}</ul></section>`:''}
@@ -1460,11 +1544,28 @@ function buy(id){
  S.log.push({d:dateStr(),i:it.i,t:`${it.n} 구매 (${won(it.p)})`});
  return true;
 }
-const planHTML=()=>S.pending.length?`📅 예정: ${S.pending.map(p=>p.i+' '+p.n).join(', ')} — 다음 나레이션에서 진행`:'';
+const planHTML=()=>{const a=S.pending.map(p=>p.i+' '+p.n);if(S.forceEv)a.push('🚀 창업 준비 (다음 턴)');return a.length?`📅 예정: ${a.join(', ')}`:''};
+// 연차·휴가: 연차는 바로 차감, 휴가는 다음 나레이션에서 진행
+function useVac(id){
+ const v=VAC.find(x=>x.id==id);
+ if(!v||S.phase!='play'||S.busy||S.dead||S.pending.some(p=>p.vac))return false;
+ if(hasLeave()){if(S.leave<v.days)return false;S.leave-=v.days}
+ const who=v.days>1&&(S.fl.dating||S.fl.married)?' {P}와 함께였다.':'';
+ S.pending.push({id:'vac',vac:1,n:v.n,i:v.i,t:(hasLeave()?`연차 ${v.days}일을 썼다. `:'')+v.t+who+(hasLeave()?` (남은 연차 ${S.leave}일)`:''),d:v.d,c:v.c,sc:v.sc});
+ S.log.push({d:dateStr(),i:v.i,t:`${v.n} 신청`});return true;
+}
+// 직접 창업: 질문 대기 중이면 지금 질문을 창업 질문으로 바꾸고, 결과를 보는 중이면 다음 턴에
+function startFound(){
+ if(S.phase!='play'||S.busy||S.dead||S.forceEv)return false;
+ if(!S.res){S.ev=E.find(e=>e.id=='found_start');S.scene=evScene(S.ev);renderPlay()}else S.forceEv='found_start';
+ return true;
+}
 side.addEventListener('click',ev=>{
  const bb=ev.target.closest('.buy');
  if(bb){if(buy(bb.dataset.buy)){beep('good');const pl=$('#plan');if(pl)pl.textContent=planHTML();renderSide()}return}
- const b=ev.target.closest('.sg');if(!b||S.phase!='play')return;beep('click');
+ const b=ev.target.closest('.sg');if(!b||S.phase!='play'||b.disabled)return;beep('click');
+ if(b.dataset.vac){if(useVac(b.dataset.vac)){const pl=$('#plan');if(pl)pl.textContent=planHTML()}renderSide();return}
+ if(b.dataset.act=='found'){if(startFound()){const pl=$('#plan');if(pl)pl.textContent=planHTML()}renderSide();return}
  if(b.dataset.rt)S.rt=b.dataset.rt;
  if(b.dataset.wk)S.wk=b.dataset.wk;
  if(b.dataset.md){if(b.dataset.md=='none'&&S.inv>0){S.cash+=S.inv;S.log.push({d:dateStr(),i:'💰',t:`투자금 ${won(S.inv)}을 전부 회수했다.`});S.inv=S.invIn=0}S.mode=b.dataset.md}
@@ -1472,17 +1573,17 @@ side.addEventListener('click',ev=>{
 });
 function renderPlay(){
  const e=S.ev,r=S.res,last=over();
- app.innerHTML=`<div class=play><div class=stage><div class=top><span class=mono>${dateStr()}</span><span>${Math.floor(S.age)}세 · ${jobLabel()}</span><span class=sp></span>${S.combo>=2?`<span class=combo>🔥 ${S.combo}</span>`:''}</div>
+ app.innerHTML=`<div class=play><div class=stage><div class=top><span class=mono>${dateStr()}</span><span>${S.myn} · ${Math.floor(S.age)}세 · ${jobLabel()}</span><span class=sp></span>${S.combo>=2?`<span class=combo>🔥 ${S.combo}</span>`:''}</div>
  <div class=lifebar title="나이 ${Math.floor(S.age)}세"><i style="width:${Math.min(100,S.age)}%"></i>${[30,40,50,60,70,80,90].map(a=>`<b style="left:${a}%">${a}</b>`).join('')}</div>
  <canvas id=scene class=scene width=128 height=80 role=img aria-label="현재 장면: 멘탈 ${S.st[0]}, 체력 ${S.st[1]}, 통장 ${S.st[2]}, 평판 ${S.st[3]}"></canvas>
  ${statsHTML(r?S.prev:S.st)}</div>
  <section class="card ev ${r&&r.s>0?'good':''}" id=evc>
-  ${e.sp?'<span class=tag>⚡ 돌발</span>':''}<h2 class=h>${e.ti}</h2><p class=q>${e.q}</p>
+  ${e.sp?'<span class=tag>⚡ 돌발</span>':''}<h2 class=h>${nm(e.ti)}</h2><p class=q>${nm(e.q)}</p>
   <p class=plan id=plan>${planHTML()}</p>
   ${r?`<div class=res><p class=pick>▶ ${r.ch}</p><p>${r.t}</p><div class=chips>${chips(r.d)}${r.bonus?'<span class="chip up">콤보 보너스 🧠+5 ⭐+3</span>':''}</div>
    <div class=narr id=narr></div>
    <button class=btn id=nx>${last?'삶의 기록 보기':'다음 →'}</button></div>`
-  :e.c.map((c,i)=>`<button class=ch data-i=${i}>${c[0]}</button>`).join('')}
+  :e.c.map((c,i)=>`<button class=ch data-i=${i}>${nm(c[0])}</button>`).join('')}
  </section></div>`;
  app.querySelectorAll('.ch').forEach(b=>b.onclick=()=>{beep('click');choose(+b.dataset.i)});
  const nx=$('#nx');if(nx){nx.onclick=()=>{beep('click');next()};nx.focus()}
@@ -1505,6 +1606,7 @@ function renderEnd(){
  app.innerHTML=`<section class="card cert"><h2 class=ct>삶의 기록</h2>
  <canvas id=scene class=scene width=128 height=80 role=img aria-label="장례식: ${e.n}"></canvas>
  <table class=tb>
+  <tr><th>이름</th><td>고(故) ${S.myn}</td></tr>
   <tr><th>생애</th><td class=mono>2026 ~ ${endY} (향년 ${S.dead.age}세)</td></tr>
   <tr><th>사인</th><td>${S.dead.cause}</td></tr>
   <tr><th>첫 직장</th><td>${C[S.ci].n} · ${D[S.di].n} · ${B[S.bi].n} <span class="dx rc-${rc}">${rn}</span></td></tr>
@@ -1526,7 +1628,7 @@ function renderEnd(){
 }
 function shareText(){
  const e=S.end;
- return `[무작위 K-신입사원]\n🏢 ${C[S.ci].n} · ${D[S.di].n} · ${B[S.bi].n} 입사\n🛤️ ${S.career.join(' → ')}\n🕯️ 향년 ${S.dead.age}세 · ${S.dead.cause}\n🏷️ ${e.n} (${e.r})\n💼 최고 순자산 ${won(S.maxWorth)} · ${relText()} · ${famText()}${location.protocol.startsWith('http')?'\n'+location.href.split('#')[0]:''}`;
+ return `[무작위 K-신입사원]\n🪪 ${S.myn}\n🏢 ${C[S.ci].n} · ${D[S.di].n} · ${B[S.bi].n} 입사\n🛤️ ${S.career.join(' → ')}\n🕯️ 향년 ${S.dead.age}세 · ${S.dead.cause}\n🏷️ ${e.n} (${e.r})\n💼 최고 순자산 ${won(S.maxWorth)} · ${relText()} · ${famText()}${location.protocol.startsWith('http')?'\n'+location.href.split('#')[0]:''}`;
 }
 async function doCopy(){
  const txt=shareText();
